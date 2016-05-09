@@ -1,0 +1,15 @@
+version: '2'
+services:
+  icedtea:
+    build: .
+    image: hisaharu/icedtea-centos
+    container_name: icedtea
+    tty: true
+    privileged: true
+    network_mode: host
+    environment:
+     - DISPLAY=$DISPLAY
+    volumes:
+     - /tmp/.X11-unix:/tmp/.X11-unix
+     - $HOME/.Xauthority:/root/.Xauthority
+     - ./logs:/logs:rw
